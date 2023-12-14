@@ -3,7 +3,7 @@
 require_once('./database_connect.php');
 var_dump($database);
 
-$request = $database->query('SELECT * FROM shows');
+$request = $database->query('SELECT type FROM showTypes');
 
 $shows = $request->fetchAll();
 

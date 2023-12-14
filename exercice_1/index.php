@@ -25,7 +25,7 @@ var_dump($clients);
 <ul>
 <?php
     foreach($clients as $client){
-        echo '<li>' . $client["firstname"] . ' ' . $client["lastname"] . '</li>'
+        echo '<li>' . $client["firstname"] . ' ' . $client["lastname"] . '</li>';
     }
 ?>
 </ul>
