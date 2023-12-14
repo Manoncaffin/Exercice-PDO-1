@@ -1,7 +1,7 @@
 <?php
 
 require_once('./database_connect.php');
-var_dump($database);
+// var_dump($database);
 
 $request = $database->query('SELECT * FROM clients');
 

@@ -1,13 +1,17 @@
 <?php
 
 require_once('./database_connect.php');
-var_dump($database);
+// var_dump($database);
 
-$request = $database->query('SELECT * FROM clients INNER JOIN cards ON clients.cardNumber = cards.cardNumber where cardTypesId=1');
+$request = $database->query
+('SELECT * FROM clients 
+INNER JOIN cards 
+ON clients.cardNumber = cards.cardNumber 
+wHERE cardTypesId=1');
 
-$cards = $request->fetchAll();
+$clientsWithFidelityCard = $request->fetchAll();
 
-var_dump($cards);
+// var_dump($clientsWithFidelityCard);
 
 
 ?>
@@ -20,5 +24,13 @@ var_dump($cards);
     <title>Document</title>
 </head>
 <body>
+<h2>Clients possédant une carte de fidélité :</h2>
+<ul>
+<?php
+    foreach($clientsWithFidelityCard as $client){
+        echo '<li>' . $client["firstName"] . ' ' . $client["lastName"] . '</li>';
+    }
+?>
+</ul>
 </body>
 </html>
