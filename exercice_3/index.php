@@ -3,10 +3,9 @@
 require_once('./database_connect.php');
 var_dump($database);
 
-$request = $database->query('SELECT * FROM clients LIMIT 20;');
+$request = $database->query('SELECT * FROM clients LIMIT 20');
 
 $clients = $request->fetchAll();
-
 
 var_dump($clients);
 
@@ -21,5 +20,13 @@ var_dump($clients);
     <title>Document</title>
 </head>
 <body>
+<h2>Les 20 premiers clients :</h2>
+<ul>
+<?php
+    foreach($clients as $client){
+        echo '<li>' . $client["firstname"] . ' ' . $client["lastname"] . '</li>';
+    }
+?>
+</ul>
 </body>
 </html>
