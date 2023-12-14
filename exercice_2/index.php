@@ -5,10 +5,10 @@ var_dump($database);
 
 $request = $database->query('SELECT type FROM showTypes');
 
-$shows = $request->fetchAll();
+$showTypes = $request->fetchAll();
 
 
-var_dump($shows);
+var_dump($showTypes);
 
 
 ?>
@@ -21,5 +21,13 @@ var_dump($shows);
     <title>Document</title>
 </head>
 <body>
+<h2>Tous les types de spectacle :</h2>
+<ul>
+<?php
+    foreach($showTypes as $showTypes){
+        echo '<li>' . $showTypes["type"] .'</li>';
+    }
+?>
+</ul>
 </body>
 </html>
