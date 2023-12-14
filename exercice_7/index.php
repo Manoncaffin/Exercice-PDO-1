@@ -1,13 +1,15 @@
 <?php
 
 require_once('./database_connect.php');
-var_dump($database);
+// var_dump($database);
 
-$request = $database->query('SELECT title, performer, date, startTime FROM shows ORDER BY title ASC');
+$request = $database->query('SELECT * FROM clients 
+LEFT JOIN cards 
+ON clients.cardNumber = cards.cardNumber');
 
-$shows = $request->fetchAll();
+$allClients = $request->fetchAll();
 
-var_dump($shows);
+// var_dump($allClients);
 
 
 ?>
@@ -20,5 +22,19 @@ var_dump($shows);
     <title>Document</title>
 </head>
 <body>
+<h2>Clients :</h2>
+<ul>
+<?php
+foreach($allClients as $client){
+        echo (
+            'Nom : ' . $client["lastName"] . '<br>' .
+            'Prénom : ' . $client["firstName"] . '<br>' .
+            'Date de naissance : ' . $client["birthDate"] . '<br>' .
+            'Carte de fidélité : ' . ($client["cardTypesId"] ===1 ? 'Oui' : 'Non') . ' <br>' .
+            'Numéro de carte : ' . $client["cardNumber"] . '<br>' .
+            '<br><hr><br>'
+        );
+};
+?>
 </body>
 </html>
