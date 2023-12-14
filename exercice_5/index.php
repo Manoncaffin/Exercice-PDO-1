@@ -1,14 +1,14 @@
 <?php
 
 require_once('./database_connect.php');
-var_dump($database);
+// var_dump($database);
 
-$request = $database->query('SELECT * FROM clients WHERE lastname LIKE "m%" ORDER BY lastname ASC');
+$request = $database->query('SELECT * FROM clients WHERE lastName LIKE "m%" ORDER BY lastName');
 
 
-$clients = $request->fetchAll();
+$clientsWithM = $request->fetchAll();
 
-var_dump($clients);
+// var_dump($clientsWithM);
 
 
 ?>
@@ -21,5 +21,12 @@ var_dump($clients);
     <title>Document</title>
 </head>
 <body>
+<h2>Clients dont le nom commence par un "m":</h2>
+<ul>
+<?php
+    foreach($clientsWithM as $client){
+        echo '<li>' . $client["firstName"] . ' ' . $client["lastName"] . '</li>';
+    }
+?>
 </body>
 </html>
