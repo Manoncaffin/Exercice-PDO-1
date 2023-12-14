@@ -1,13 +1,13 @@
 <?php
 
 require_once('./database_connect.php');
-var_dump($database);
+// var_dump($database);
 
 $request = $database->query('SELECT title, performer, date, startTime FROM shows ORDER BY title ASC');
 
-$shows = $request->fetchAll();
+$infosShows = $request->fetchAll();
 
-var_dump($shows);
+// var_dump($shows);
 
 
 ?>
@@ -20,5 +20,12 @@ var_dump($shows);
     <title>Document</title>
 </head>
 <body>
+<h2>Tous les spectacles :</h2>
+<ul>
+<?php
+    foreach($infosShows as $show){
+        echo '<li>' . $show["title"] . ' par ' . $show["performer"] . ' le ' . $show["date"] . ' à ' . $show["startTime"] . '</li>';
+    }
+?>
 </body>
 </html>
