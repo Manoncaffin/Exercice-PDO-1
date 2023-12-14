@@ -20,6 +20,16 @@ var_dump($clients);
     <title>Document</title>
 </head>
 <body>
+
+<h2>Tous les clients :</h2>
+<ul>
+<?php
+    foreach($clients as $client){
+        echo '<li>' . $client["firstname"] . ' ' . $client["lastname"] . '</li>'
+    }
+?>
+</ul>
+
 </body>
 </html>
 
